@@ -3,6 +3,6 @@ Before Using This Repository You'll Need to:-
 2. Create an App in React
 3. Download this code
 4. Run npm install in it
-5. From your Dashboard in the **Home** tab, Copy the **Credentails** (AppID, Region, AuthKey) & Paste it into **src/CometChat-init/CometChat-init.tsx**.
+5. From your Dashboard in the **Home** tab, Copy the **Credentails** (AppID, Region, AuthKey) & Paste it into **src/CometChatNoSSR/CometChatNoSSR.tsx**.
 6. Run npm run dev
    
