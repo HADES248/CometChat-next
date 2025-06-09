@@ -36,7 +36,7 @@ Real-time chat is a foundational feature in many modern apps, from customer supp
 
 ## Step 1: Set Up Your Project
 
-Create a new React project using Create React App with the TypeScript template:
+Create a new Next.js project using Create React App with the TypeScript template:
 
 ```bash
 npx create-next-app@latest my-app --typescript
