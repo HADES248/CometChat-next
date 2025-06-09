@@ -1,56 +1,106 @@
-# CometChat Next.js Integration Guide
+# How to Build a Next.js CometChat UI Kit
 
-This README provides a step-by-step guide to integrating CometChat into your Next.js application using the CometChat UI Kit (Conversation + Message View).
+## What You'll Be Building
+
+![Chat UI Screenshot](https://github.com/HADES248/CometChatReact-UI-Kit/blob/master/src/assets/CometChat.png)  
+*Alt text: Screenshot of a working CometChat-powered Next.js app with a user logged in and active chat visible*
+
+You’ll build a simple React application that allows users log in, view conversations, and exchange real-time text messages using CometChat’s UI Kit.
+
+---
+
+## Introduction
+
+In this Section, you’ll learn how to integrate CometChat into a Next.js application using the official CometChat UI Kit.
+
+Real-time chat is a foundational feature in many modern apps, from customer support to social platforms. CometChat offers a robust SDK and UI Kit that makes it fast and reliable to add chat functionality without building everything from scratch.
+
+---
 
 ## Prerequisites
 
-Before using this repository, follow the steps below:
+**Knowledge Required**
+- Basic React hooks
+- Next.js fundamentals (pages, API routes)
+- ES6+ JavaScript
 
-1. **Create a CometChat Account**
-   Sign up at [https://app.cometchat.com/signup](https://app.cometchat.com/signup)
+**Tools Required**
+- Node.js v16+  
+- npm (v8+)  
+- Git (optional, for cloning the repository)  
+- A modern code editor (e.g., VS Code)
 
-2. **Create a New App**
-   After signing in, create a new app from your CometChat dashboard.
+---
 
-3. **Download This Code**
-   Clone or download the repository that contains the CometChat UI Kit (Conversation + Message View).
+# CometChat Integration
 
-4. **Install Dependencies**
-   Navigate to the project directory and install dependencies:
+## Step 1: Set Up Your Project
 
-5. **Get Credentials**
-   From the **Home** tab in your CometChat dashboard, copy the following:
+Create a new React project using Create React App with the TypeScript template:
 
-   * App ID
-   * Region
-   * Auth Key
+```bash
+npx create-next-app@latest my-app --typescript
+cd my-app
+```
+## Step 2: Install Dependencies
 
-6. **Initialize UI Kit**
-   Open `src/CometChat-init/CometChatNoSSR.tsx` and paste your credentials:
+To integrate CometChat into your project, install the required SDK and UI Kit using:
 
+```bash
+npm install @cometchat/chat-sdk-javascript @cometchat/chat-uikit-react
+```
 
-7. **Authenticate the User**
-   Use CometChat's authentication methods to log in a user. You can use demo users or create your own.
+## Step 3: Render Experience
 
-8. **Create Users**
-   You can create users using CometChat Dashboard or via their SDK.
+### we will create the `CometChatNoSSR.tsx` & `CometChatNoSSR.css` files `src/CometChatNoSSR`
+- The file initializes CometChat using TypeScript.
+- It imports CometChat from the SDK, builds `AppSettings` with presence subscription, and calls `CometChat.init()`.
+- Logs success or error messages to the console for debugging.
 
-9. **Demo Users**
-   Use the preconfigured demo users to test the chat functionalities.
+### Disabling SSR in `src/App.tsx`
+- we will disable `Server-Side Rendering (SSR)` for `CometChatNoSSR.tsx` while keeping the rest of the application’s SSR functionality intact.
+- This ensures that the CometChat UI Kit components load only on the client-side, preventing SSR-related issues
 
-10. **Build the Chat Experience**
-    Integrate the UI components to stitch the full chat experience.
+With this setup, CometChat is properly integrated and ready for real-time communication.
 
-11. **Stitch the Components**
-    Combine conversation list and message view components into your app.
+## Step 4: Build the UI
 
-12. **Run the App**
-    Start the development server:
+### Components
+- `CometChatSelector.tsx` – Tracks logged-in users, displays conversations, and updates selected chat items.
+  
+   ```bash
+   src/app/
+   │── CometChatSelector/
+   │   ├── CometChatSelector.tsx
+   │   ├── CometChatSelector.css
+   ```
+   
+- `CometChatNoSSR.tsx` – Manages state, handles conversation selection, and renders chat interface components.
+  
+   ```bash
+  src/
+   │── CometChatNoSSR/
+   │   ├── CometChatNoSSR.tsx
+   │   ├── CometChatNoSSR.css
+   ```
 
-13. **Customize the Theme**
-    Modify fonts, colors, and other UI settings to match your brand.
+- `globals.css` - updating globals.css to ensure CometChat UI Kit is properly styled.
 
-## Notes
+This setup ensures a seamless chat experience.
 
-* Make sure you are connected to the internet while using CometChat services.
-* Refer to [CometChat Documentation](https://www.cometchat.com/docs/) for advanced configurations and custom features.
+## Step 5: Test & Verify
+
+### Testing
+1. Start the development server:
+   ```bash
+   npm run dev
+   ```
+- Open http://localhost:3000 in your browser.
+- Log in, select a conversation, and send messages in real-time.
+Troubleshooting- Ensure .env values (APP_ID, REGION, AUTH_KEY) are correct.
+- Verify at least one user exists in the CometChat Dashboard.
+- Confirm the recipient user is online.
+ConclusionYour React TypeScript app now integrates CometChat UI Kit, enabling users to log in, view conversations, and send messages.Next Steps- Enable image and file sharing.
+- Store message history locally using IndexedDB.
+- Add typing indicators and read receipts.
+- Expand to voice/video calls using CometChat’s SDK
