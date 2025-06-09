@@ -100,7 +100,8 @@ This setup ensures a seamless chat experience.
 Troubleshooting- Ensure .env values (APP_ID, REGION, AUTH_KEY) are correct.
 - Verify at least one user exists in the CometChat Dashboard.
 - Confirm the recipient user is online.
-ConclusionYour React TypeScript app now integrates CometChat UI Kit, enabling users to log in, view conversations, and send messages.Next Steps- Enable image and file sharing.
+### Conclusion
+Your React TypeScript app now integrates CometChat UI Kit, enabling users to log in, view conversations, and send messages.Next Steps- Enable image and file sharing.
 - Store message history locally using IndexedDB.
 - Add typing indicators and read receipts.
 - Expand to voice/video calls using CometChat’s SDK
